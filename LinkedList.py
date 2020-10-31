@@ -71,3 +71,17 @@ class LinkedList:
 
             # Set new tail
             self.tail = current_node
+
+    def find(song):
+        # Set node variable
+        current_node = self.head
+        # While current_node exists
+        while current_node is not None:
+            # Checks if node is the target song
+            if current_node.song == song:
+                return True
+            else:
+                current_node = current_node.next
+
+        # Return False if not foung
+        return False
