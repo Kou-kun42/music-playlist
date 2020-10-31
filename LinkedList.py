@@ -72,7 +72,7 @@ class LinkedList:
             # Set new tail
             self.tail = current_node
 
-    def find(song):
+    def find(self, song):
         # Set node variable
         current_node = self.head
         # While current_node exists
@@ -83,5 +83,16 @@ class LinkedList:
             else:
                 current_node = current_node.next
 
-        # Return False if not foung
+        # Return False if not found
         return False
+
+    def delete(self, song):
+        curr_node = self.head
+        # Check if list exists and has more than one node
+        if curr_node is not None and curr_node.next is not None:
+            # Iterate through nodes
+            while curr_node.next is not None and curr_node.next.song != song:
+                curr_node = curr_node.next
+
+            if curr_node.next.song == song:
+                curr_node.next = curr_node.next.next
