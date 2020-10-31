@@ -23,3 +23,17 @@ class LinkedList:
 
         # Set the tail as the node to append
         self.tail = node
+
+    def prepend(self, song):
+        # Make new node from the song
+        node = Node(song)
+
+        # If the head is not empty then set song's next to it
+        if self.head is not None:
+            node.next = self.head
+        # If head is empty then set tail to the new node
+        else:
+        self.tail = node
+
+        # Set the head to the new node
+        self.head = node
