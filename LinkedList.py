@@ -33,7 +33,16 @@ class LinkedList:
             node.next = self.head
         # If head is empty then set tail to the new node
         else:
-        self.tail = node
+            self.tail = node
 
         # Set the head to the new node
         self.head = node
+
+    def print_songs(self):
+        # Set variable to keep track of the current node
+        current_node = self.head
+
+        # While the current node is not empty, print name of song
+        while current_node is not None:
+            print(current_node.song)
+            current_node = current_node.next
