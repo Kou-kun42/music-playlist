@@ -46,3 +46,12 @@ class LinkedList:
         while current_node is not None:
             print(current_node.song)
             current_node = current_node.next
+
+    def delete_from_head(self):
+        # Checks if the list has something
+        if self.head is not None:
+            # Checks if list only has one item
+            if self.head == self.tail:
+                self.tail = None
+            # Get rid of current head node
+            self.head = self.head.next
