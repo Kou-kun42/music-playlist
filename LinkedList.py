@@ -55,3 +55,19 @@ class LinkedList:
                 self.tail = None
             # Get rid of current head node
             self.head = self.head.next
+
+    def delete_from_tail(self):
+        # Checks if list has something
+        if self.head is not None:
+            # Make a node variable
+            current_node = self.head
+            # Checks if list doesn't have only 1 item
+            if self.head != self.tail:
+                # Iterate through list until we find node that points to tail
+                while current_node.next != self.tail:
+                    current_node = current_node.next
+                # Get rid of pointer to tail node
+                current_node.next = None
+
+            # Set new tail
+            self.tail = current_node
