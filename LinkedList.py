@@ -60,17 +60,24 @@ class LinkedList:
         # Checks if list has something
         if self.head is not None:
             # Make a node variable
-            current_node = self.head
+            curr_node = self.head
             # Checks if list doesn't have only 1 item
             if self.head != self.tail:
                 # Iterate through list until we find node that points to tail
-                while current_node.next != self.tail:
-                    current_node = current_node.next
+                while curr_node.next != self.tail:
+                    curr_node = curr_node.next
                 # Get rid of pointer to tail node
-                current_node.next = None
+                curr_node.next = None
+            # Else if the list only has 1 node then set current to None
+            else:
+                curr_node = None
 
             # Set new tail
-            self.tail = current_node
+            self.tail = curr_node
+
+            # If the list only had 1 item, set head to None as well
+            if curr_node is None:
+                self.head = curr_node
 
     def find(self, song):
         # Set node variable
@@ -87,12 +94,25 @@ class LinkedList:
         return False
 
     def delete(self, song):
-        curr_node = self.head
-        # Check if list exists and has more than one node
-        if curr_node is not None and curr_node.next is not None:
-            # Iterate through nodes
-            while curr_node.next is not None and curr_node.next.song != song:
-                curr_node = curr_node.next
+        node = self.head
+        # Check if list exists
+        if node is not None:
+            # Check if there's more than 1 node
+            if node.next is not None:
+                # Check if head is target
+                if node.song == song:
+                    # Get rid of head
+                    self.head = node.next
+                else:
+                    # Iterate through nodes
+                    while node.next is not None and node.next.song != song:
+                        node = node.next
 
-            if curr_node.next.song == song:
-                curr_node.next = curr_node.next.next
+                    if node.next is not None and node.next.song == song:
+                        node.next = node.next.next
+            # Else if there's only 1 node, check that for the song
+            else:
+                if node.song == song:
+                    # get rid of head and tail
+                    self.head = None
+                    self.tail = None
